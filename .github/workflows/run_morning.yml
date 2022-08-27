@@ -1,0 +1,40 @@
+# workflows 工作流名称
+name: run morning
+# 工作流程的触发器
+on:
+  schedule:
+  #  运行时间 22:30运行 - 6:30运行
+  - cron:  '30 22 * * *'
+  # 可以手动运行
+  workflow_dispatch:
+
+# 工作流程中运行的所有作业组合在一起
+jobs:
+
+  send_message:
+    # 在最新版本的ubuntu运行器上运行
+    runs-on: ubuntu-latest
+    # 作业名称
+    name: Send Morning Broadcast to Girlfriend
+    # 作业的所有步骤
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+      with:
+        ref: master
+
+    - name: sender
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        architecture: 'x64'
+    - run: pip install -r ./morning_requirements.txt && python ./morning.py
+
+    env:
+      APP_ID: ${{ secrets.APP_ID }}
+      APP_SECRET: ${{ secrets.APP_SECRET }}
+      USER_ID: ${{ secrets.USER_ID }}
+      TEMPLATE_ID: ${{ secrets.TEMPLATE_MORNING_ID }}
+      BEGIN_DATE: ${{ secrets.BEGIN_DATE }}
+      CITY: ${{ secrets.CITY }}
+      EMOJI_NUMBER: ${{secrets.EMOJI_MORNING_NUMBER }}
