@@ -37,8 +37,4 @@ jobs:
       TEMPLATE_ID: ${{ secrets.TEMPLATE_MORNING }}
       BEGIN_DATE: ${{ secrets.BEGIN_DATE }}
       CITY: ${{ secrets.CITY }}
-<<<<<<< HEAD
       EMOJI_NUMBER: ${{secrets.EMOJI_MORNING }}
-=======
-      EMOJI_NUMBER: ${{secrets.EMOJI_MORNING_NUMBER }}
->>>>>>> 11dddadfe0bf915ca315860cffb7c6fbc7b73894
