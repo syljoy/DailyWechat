@@ -17,11 +17,11 @@ from wechatpy.client.api import WeChatMessage
 app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
 user_ids = os.environ["USER_ID"].split("\n")
-template_id = os.environ["TEMPLATE_MORNING_ID"]
+template_id = os.environ["TEMPLATE_MORNING"]
 
 city = os.environ[""]
 begin_date = os.environ["BEGIN_DATE"]
-emoji_number = int(os.environ["EMOJI_MORNING_NUMBER"].strip())
+emoji_number = int(os.environ["EMOJI_MORNING"].strip())
 
 # 这里差了8个时区
 today = datetime.now() + timedelta(hours=8)
