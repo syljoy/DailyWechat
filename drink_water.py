@@ -59,40 +59,49 @@ data = {
 client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
 
+time_list = ['22:00', '19:00', '17:20', '15:00', '12:20', '10:40', '08:20', '07:00']
 while True:
-
     # 更新信息是否已发送
     is_sending = True
-    # 获取当前时间 - 差了8个时区
+    # 获取当前时间
     now_time = datetime.now() + timedelta(hours=8)
     print(now_time.strftime('%H:%M'))
-    if "22:00" < now_time.strftime('%H:%M'):
+    if "22:00" in time_list and "22:00" < now_time.strftime('%H:%M'):
+        time_list.remove("22:00")
         data['words']['value'] = get_word_drink(8)
         is_sending = False
         break
-    elif "19:00" < now_time.strftime('%H:%M'):
+    elif "19:00" in time_list and "19:00" < now_time.strftime('%H:%M'):
+        time_list.remove("19:00")
         data['words']['value'] = get_word_drink(7)
         is_sending = False
-    elif "17:20" < now_time.strftime('%H:%M'):
+    elif "17:20" in time_list and "17:20" < now_time.strftime('%H:%M'):
+        time_list.remove("17:20")
         data['words']['value'] = get_word_drink(6)
         is_sending = False
-    elif "15:00" < now_time.strftime('%H:%M'):
+    elif "15:00" in time_list and "15:00" < now_time.strftime('%H:%M'):
+        time_list.remove("15:00")
         data['words']['value'] = get_word_drink(5)
         is_sending = False
-    elif "12:20" < now_time.strftime('%H:%M'):
+    elif "12:20" in time_list and "12:20" < now_time.strftime('%H:%M'):
+        time_list.remove("12:20")
         data['words']['value'] = get_word_drink(4)
         is_sending = False
-    elif "10:40" < now_time.strftime('%H:%M'):
+    elif "10:40" in time_list and "10:40" < now_time.strftime('%H:%M'):
+        time_list.remove("10:40")
         data['words']['value'] = get_word_drink(3)
         is_sending = False
-    elif "08:20" < now_time.strftime('%H:%M'):
+    elif "08:20" in time_list and "08:20" < now_time.strftime('%H:%M'):
+        time_list.remove("08:20")
         data['words']['value'] = get_word_drink(2)
         is_sending = False
-    elif "07:00" < now_time.strftime('%H:%M'):
+    elif "07:00" in time_list and "07:00" < now_time.strftime('%H:%M'):
+        time_list.remove("07:00")
         data['words']['value'] = get_word_drink(1)
         is_sending = False
     else:
-        pass
+        continue
+    
     if not is_sending:
         times = times + 1
         data['times']['value'] = times
