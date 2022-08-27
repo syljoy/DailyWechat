@@ -33,7 +33,6 @@ def get_words():
 
 def get_now_time():
     now_time = datetime.now() + timedelta(hours=8)
-    now_time = datetime.now()
     week_list = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
     return "{}  {}".format(now_time.strftime('%Y年%m月%d日 %H:%M'), week_list[now_time.weekday()])
 
@@ -65,7 +64,7 @@ while True:
     # 更新信息是否已发送
     is_sending = True
     # 获取当前时间 - 差了8个时区
-    now_time = datetime.now() + timedelta(hours=7)
+    now_time = datetime.now() + timedelta(hours=8)
     print(now_time.strftime('%H:%M'))
     if "22:00" < now_time.strftime('%H:%M'):
         data['words']['value'] = get_word_drink(8)
