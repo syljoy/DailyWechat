@@ -17,9 +17,9 @@ from wechatpy.client.api import WeChatMessage
 app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
 user_ids = os.environ["USER_ID"].split("\n")
-template_morning = os.environ["APP_SECRET"]
+template_morning = os.environ["TEMPLATE_MORNING"]
 
-city = os.environ[""]
+city = os.environ["CITY"]
 begin_date = os.environ["BEGIN_DATE"]
 emoji_morning = int(os.environ["EMOJI_MORNING"].strip())
 
