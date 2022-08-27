@@ -2,7 +2,7 @@
 #
 # @Email   : syljoy@163.com
 # @Github  : https://github.com/syljoy
-# @Desc    :
+# @Desc    : 每日播报
 
 import os
 from datetime import datetime, timedelta
