@@ -65,7 +65,7 @@ while True:
     # 更新信息是否已发送
     is_sending = True
     # 获取当前时间 - 差了8个时区
-    now_time = datetime.now() + timedelta(hours=8)
+    now_time = datetime.now() + timedelta(hours=7)
     print(now_time.strftime('%H:%M'))
     if "22:00" < now_time.strftime('%H:%M'):
         data['words']['value'] = get_word_drink(8)
