@@ -109,6 +109,16 @@ while True:
 
     time.sleep(1200)
 
-
+if not is_sending:
+    times = times + 1
+    data['times']['value'] = times
+    count = 0
+    for user_id in user_ids:
+        res = wm.send_template(user_id, template_id, data)
+        count += 1
+    print("发送了" + str(count) + "条消息")
+    for k, v in data.items():
+        v.pop('color', None)
+    print(data)
 
 
