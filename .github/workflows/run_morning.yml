@@ -34,7 +34,7 @@ jobs:
       APP_ID: ${{ secrets.APP_ID }}
       APP_SECRET: ${{ secrets.APP_SECRET }}
       USER_ID: ${{ secrets.USER_ID }}
-      TEMPLATE_ID: ${{ secrets.TEMPLATE_MORNING }}
+      TEMPLATE_MORNING_ID: ${{ secrets.TEMPLATE_MORNING_ID }}
       BEGIN_DATE: ${{ secrets.BEGIN_DATE }}
       CITY: ${{ secrets.CITY }}
-      EMOJI_NUMBER: ${{secrets.EMOJI_MORNING }}
+      EMOJI_MORNING_NUMBER: ${{secrets.EMOJI_MORNING_NUMBER }}

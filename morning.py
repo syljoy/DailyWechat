@@ -17,11 +17,11 @@ from wechatpy.client.api import WeChatMessage
 app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
 user_ids = os.environ["USER_ID"].split("\n")
-template_morning = os.environ["TEMPLATE_MORNING"]
+template_id = os.environ["TEMPLATE_MORNING_ID"]
 
 city = os.environ["CITY"]
 begin_date = os.environ["BEGIN_DATE"]
-emoji_morning = int(os.environ["EMOJI_MORNING"].strip())
+emoji_number = int(os.environ["EMOJI_MORNING_NUMBER"].strip())
 
 # 这里差了8个时区
 today = datetime.now() + timedelta(hours=8)
@@ -112,7 +112,7 @@ for index, (name, value, detail) in enumerate(zip(names_zhishu, values_zhishu, d
     data['value_zhishu{}'.format(index)] = {"value": value + "，", "color": values_zhishu_color}
     data['detail_zhishu{}'.format(index)] = {"value": detail + '\n', "color": details_zhishu_color}
 # 添加emoji
-for i in range(emoji_morning):
+for i in range(emoji_number):
     data['emoji{}'.format(i)] = {"value": get_random_emoji(), "color": black_color}
 
 # 创建微信
@@ -123,7 +123,7 @@ wm = WeChatMessage(client)
 # 开始发送消息
 count = 0
 for user_id in user_ids:
-    res = wm.send_template(user_id, template_morning, data)
+    res = wm.send_template(user_id, template_id, data)
     count += 1
 
 print("发送了" + str(count) + "条消息")
