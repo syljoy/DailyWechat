@@ -3,8 +3,8 @@ name: run drink water
 # 工作流程的触发器
 on:
   schedule:
-  #  运行时间 22:00运行 - 6:00运行
-  - cron:  '40 22 * * *'
+  #  运行时间 8:40 - 16:40运行
+  - cron:  '40 8 * * *'
   # 可以手动运行
   workflow_dispatch:
 
@@ -35,3 +35,7 @@ jobs:
       APP_SECRET: ${{ secrets.APP_SECRET }}
       USER_ID: ${{ secrets.USER_ID }}
       TEMPLATE_DRINK_ID: ${{ secrets.TEMPLATE_DRINK_ID }}
+      RUNNING_TIME: 17:20
+      REMINDER_TIMES: 6
+      DRINK_WORDS: 下班离开办公室前喝一杯水，晚餐不会暴饮暴食。
+

@@ -1,0 +1,41 @@
+# workflows 工作流名称
+name: run drink water
+# 工作流程的触发器
+on:
+  schedule:
+  #  运行时间 10:20 - 18:20运行
+  - cron:  '20 10 * * *'
+  # 可以手动运行
+  workflow_dispatch:
+
+# 工作流程中运行的所有作业组合在一起
+jobs:
+
+  send_message:
+    # 在最新版本的ubuntu运行器上运行
+    runs-on: ubuntu-latest
+    # 作业名称
+    name: Water Clock for Girlfriend
+    # 作业的所有步骤
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+      with:
+        ref: main
+
+    - name: sender
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        architecture: 'x64'
+    - run: pip install -r ./drink_water_requirements.txt && python ./drink_water.py
+
+    env:
+      APP_ID: ${{ secrets.APP_ID }}
+      APP_SECRET: ${{ secrets.APP_SECRET }}
+      USER_ID: ${{ secrets.USER_ID }}
+      TEMPLATE_DRINK_ID: ${{ secrets.TEMPLATE_DRINK_ID }}
+      RUNNING_TIME: 19:00
+      REMINDER_TIMES: 7
+      DRINK_WORDS: 用完晚餐半小时后喝水，加强消化功能，减负又减肥。
+
