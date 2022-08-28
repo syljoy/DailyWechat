@@ -49,12 +49,7 @@ def get_word_drink(index=0):
                    "睡前1至半小时喝适量水，有助于新陈代谢和安神睡眠。"]
     return drink_words[index]
 times = 0
-data = {
-    "now": {"value": get_now_time(), "color": get_random_color()},
-    "words": {"value": get_word_drink(0), "color": get_random_color()},
-    "times": {"value": times, "color": get_random_color()},
-    "chp": {"value": get_words(), "color": get_random_color()},
-}
+data = {}
 
 client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
@@ -68,43 +63,40 @@ while True:
     print(now_time.strftime('%H:%M'))
     if "22:00" in time_list and "22:00" < now_time.strftime('%H:%M'):
         time_list.remove("22:00")
-        data['words']['value'] = get_word_drink(8)
         is_sending = False
         break
     elif "19:00" in time_list and "19:00" < now_time.strftime('%H:%M'):
         time_list.remove("19:00")
-        data['words']['value'] = get_word_drink(7)
         is_sending = False
     elif "17:20" in time_list and "17:20" < now_time.strftime('%H:%M'):
         time_list.remove("17:20")
-        data['words']['value'] = get_word_drink(6)
         is_sending = False
     elif "15:00" in time_list and "15:00" < now_time.strftime('%H:%M'):
         time_list.remove("15:00")
-        data['words']['value'] = get_word_drink(5)
         is_sending = False
     elif "12:20" in time_list and "12:20" < now_time.strftime('%H:%M'):
         time_list.remove("12:20")
-        data['words']['value'] = get_word_drink(4)
         is_sending = False
     elif "10:40" in time_list and "10:40" < now_time.strftime('%H:%M'):
         time_list.remove("10:40")
-        data['words']['value'] = get_word_drink(3)
         is_sending = False
     elif "08:20" in time_list and "08:20" < now_time.strftime('%H:%M'):
         time_list.remove("08:20")
-        data['words']['value'] = get_word_drink(2)
         is_sending = False
     elif "07:00" in time_list and "07:00" < now_time.strftime('%H:%M'):
         time_list.remove("07:00")
-        data['words']['value'] = get_word_drink(1)
         is_sending = False
     else:
         continue
     
     if not is_sending:
         times = times + 1
-        data['times']['value'] = times
+        
+        data['now'] = {"value": get_now_time(), "color": get_random_color()}
+        data['times']['value'] = {"value": times, "color": get_random_color()}
+        data['words'] = {"value": get_word_drink(times), "color": get_random_color()}
+        data['chp'] = {"value": get_words(), "color": get_random_color()}
+
         count = 0
         for user_id in user_ids:
             res = wm.send_template(user_id, template_id, data)
@@ -119,7 +111,13 @@ while True:
 
 if not is_sending:
     times = times + 1
+
+    data['now'] = {"value": get_now_time(), "color": get_random_color()}
+    data['times']['value'] = {"value": times, "color": get_random_color()}
+    data['words'] = {"value": get_word_drink(times), "color": get_random_color()}
+    data['chp'] = {"value": get_words(), "color": get_random_color()}
     data['times']['value'] = times
+
     count = 0
     for user_id in user_ids:
         res = wm.send_template(user_id, template_id, data)
@@ -128,5 +126,7 @@ if not is_sending:
     for k, v in data.items():
         v.pop('color', None)
     print(data)
+
+print(time_list)
 
 
