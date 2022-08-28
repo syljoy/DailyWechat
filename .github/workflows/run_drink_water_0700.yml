@@ -1,5 +1,5 @@
 # workflows 工作流名称
-name: run drink water
+name: run drink water 0700
 # 工作流程的触发器
 on:
   schedule:
