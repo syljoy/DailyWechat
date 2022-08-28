@@ -93,7 +93,7 @@ while True:
         times = times + 1
         
         data['now'] = {"value": get_now_time(), "color": get_random_color()}
-        data['times']['value'] = {"value": times, "color": get_random_color()}
+        data['times'] = {"value": times, "color": get_random_color()}
         data['words'] = {"value": get_word_drink(times), "color": get_random_color()}
         data['chp'] = {"value": get_words(), "color": get_random_color()}
 
@@ -113,7 +113,7 @@ if not is_sending:
     times = times + 1
 
     data['now'] = {"value": get_now_time(), "color": get_random_color()}
-    data['times']['value'] = {"value": times, "color": get_random_color()}
+    data['times'] = {"value": times, "color": get_random_color()}
     data['words'] = {"value": get_word_drink(times), "color": get_random_color()}
     data['chp'] = {"value": get_words(), "color": get_random_color()}
     data['times']['value'] = times
