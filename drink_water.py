@@ -116,7 +116,6 @@ if not is_sending:
     data['times'] = {"value": times, "color": get_random_color()}
     data['words'] = {"value": get_word_drink(times), "color": get_random_color()}
     data['chp'] = {"value": get_words(), "color": get_random_color()}
-    data['times']['value'] = times
 
     count = 0
     for user_id in user_ids:
