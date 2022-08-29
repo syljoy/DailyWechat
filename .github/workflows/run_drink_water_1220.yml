@@ -3,8 +3,8 @@ name: run drink water 1220
 # 工作流程的触发器
 on:
   schedule:
-  #  运行时间 3:20 - 11:40运行
-  - cron:  '40 3 * * *'
+  #  运行时间 2:40 - 10:40运行  排队时间较长
+  - cron:  '40 2 * * *'
   # 可以手动运行
   workflow_dispatch:
 
